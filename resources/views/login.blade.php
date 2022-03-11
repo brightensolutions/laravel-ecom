@@ -74,14 +74,15 @@
                 <div class="col-lg-6 offset-lg-3 col-md-12 col-sm-12 col-12">
                     <div class="account_form">
                         <h3>Login</h3>
-                        <form action="#">
+                        <form action="login" method="POST">
+                            @csrf
                             <div class="default-form-box">
                                 <label>Username or email <span>*</span></label>
-                                <input type="text" class="form-control">
+                                <input type="text" name="email" class="form-control">
                             </div>
                             <div class="default-form-box">
                                 <label>Passwords <span>*</span></label>
-                                <input type="password" class="form-control">
+                                <input type="password" name="password" class="form-control">
                             </div>
                             <div class="login_submit">
                                 <button class="theme-btn-one btn-black-overlay btn_md" type="submit">login</button>

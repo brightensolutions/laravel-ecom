@@ -14,14 +14,20 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/logout', function () {
+    Session::forget('user');
+    return redirect('login');
+});
 
-// Route::view("/","index");
+
+Route::get("/",[ProductController::class,'index']);
 
 Route::view("/login","login");
 
 Route::post("/login",[UserController::class,'login']);
 
-Route::get("/",[ProductController::class,'index']);
+Route::get("/products",[ProductController::class,'product']);
+
+Route::get("details/{id}",[ProductController::class,'detail']);
+
+Route::post("add_to_cart",[ProductController::class,'addToCart']);

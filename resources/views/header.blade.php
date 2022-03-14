@@ -1,3 +1,11 @@
+<?php
+use App\Http\Controllers\ProductController;
+$total=0;
+if(Session::has('user'))
+{
+$total= ProductController::cartItem();
+}
+?>
 <!-- Preloader Area -->
 <div id="preloader">
         <div id="status">
@@ -18,9 +26,13 @@
                 </div>
                 <div class="col-lg-6 col-md-5">
                     <ul class="top-header-menu">
+                       @if(Session::has('user'))
                        
-                        <li><a href="my-account.html">Login</a></li>
-                        <li><a href="my-account.html">My Account</a></li>
+                        <li>{{Session::get('user')['name']}}</li>
+                        <li><a href="/logout">Logout</a></li>
+                        @else
+                        <li><a href="/login">Login</a></li>
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -78,7 +90,7 @@
                             <div class="option-item">
                                 <div class="cart-btn">
                                     <a href="#" data-bs-toggle="modal" data-bs-target="#shoppingCartModal"><i
-                                            class='fas fa-shopping-bag'></i><span>3</span></a>
+                                            class='fas fa-shopping-bag'></i><span>{{$total}}</span></a>
                                 </div>
                             </div>
                             <!-- <div class="option-item">
